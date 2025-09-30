@@ -1,52 +1,50 @@
 from django.contrib import admin
-from parler.admin import TranslatableAdmin
-from .models import Country, City, CounterStat, HowItWorksStep, ServiceCard
+from modeltranslation.admin import TranslationAdmin
+from solo.admin import SingletonModelAdmin
+from adminsortable2.admin import SortableAdminMixin
+from .models import SiteSettings, Specialty, Statistic, WorkStep, ServiceCard, Country, City
 
 
-@admin.register(Country)
-class CountryAdmin(TranslatableAdmin):
-    list_display = ("__str__", "iso2", "order_index", "created_at")
-    list_display_links = ("__str__",)
-    list_editable = ("order_index",)
-    search_fields = ("translations__name", "iso2")
+@admin.register(SiteSettings)
+class SiteSettingsAdmin(SingletonModelAdmin):
     fieldsets = (
-        ("Tarjima", {"fields": ("name", "slug")}),
-        ("Umumiy", {"fields": ("iso2", "order_index")}),
+        ("Hero", {"fields": ("hero_title", "hero_subtitle", "hero_video")}),
+        ("Contacts", {"fields": ("phone_number", "email", "address")}),
+        ("Socials", {"fields": ("facebook_url", "instagram_url", "telegram_url", "youtube_url")}),
+        ("SEO", {"fields": ("meta_title", "meta_description", "meta_keywords")}),
     )
 
 
-@admin.register(City)
-class CityAdmin(TranslatableAdmin):
-    list_display = ("__str__", "country", "order_index")
-    list_display_links = ("__str__",)
-    list_editable = ("order_index",)
-    list_filter = ("country",)
-    search_fields = ("translations__name", "country__translations__name")
-    fieldsets = (
-        ("Tarjima", {"fields": ("name", "slug")}),
-        ("Umumiy", {"fields": ("country", "order_index")}),
-    )
+@admin.register(Specialty)
+class SpecialtyAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ("title", "order")
+    search_fields = ("title",)
 
 
-@admin.register(CounterStat)
-class CounterStatAdmin(TranslatableAdmin):
-    list_display = ("__str__", "value_int", "is_active", "order_index")
-    list_display_links = ("__str__",)
-    list_editable = ("value_int", "is_active", "order_index")
-    search_fields = ("translations__label",)
+@admin.register(Statistic)
+class StatisticAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ("title", "number", "order")
 
 
-@admin.register(HowItWorksStep)
-class HowItWorksStepAdmin(TranslatableAdmin):
-    list_display = ("order_index", "__str__", "is_active")
-    list_display_links = ("__str__",)
-    list_editable = ("order_index", "is_active")
-    search_fields = ("translations__title",)
+@admin.register(WorkStep)
+class WorkStepAdmin(admin.ModelAdmin):
+    list_display = ("step_number", "title")
+    ordering = ("step_number",)
 
 
 @admin.register(ServiceCard)
-class ServiceCardAdmin(TranslatableAdmin):
-    list_display = ("__str__", "is_active", "order_index")
-    list_display_links = ("__str__",)
-    list_editable = ("is_active", "order_index")
-    search_fields = ("translations__title",)
+class ServiceCardAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ("title", "order")
+
+
+@admin.register(Country)
+class CountryAdmin(TranslationAdmin):
+    list_display = ("id", "name")
+    search_fields = ("name",)
+
+
+@admin.register(City)
+class CityAdmin(TranslationAdmin):
+    list_display = ("id", "name", "country")
+    search_fields = ("name",)
+    list_filter = ("country",)
