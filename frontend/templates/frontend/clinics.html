@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcha shifoxonalar | MedMapp</title>
+
+    <meta name="keywords" content="medmapp, medmapp uz, Hindistonda davolanish, eng yaxshi shifokorlar, top 10 klinika, onkologiya markazi, O'zbekistonliklar uchun davolanish, лечение в индии, лучшие врачи индии, топ клиник индии, saratonni davolash, jigar transplantatsiyasi, Hindiston, buyrak transplantatsiyasi, jigar transplantatsiyasi, jarrohlik, tibbiy turizm">
+    <meta name="description" content="MedMapp platformasi orqali Hindistondagi eng mashhur shifoxonalarda arzon va shaffof narxlarda davolaning!">
+
+    <meta property="og:title" content="MedMapp platformasi rasmiy veb-sayti">
+    <meta property="og:description" content="MedMapp platformasi orqali Hindistondagi eng mashhur shifoxonalarda arzon va shaffof narxlarda davolaning!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://medmapp.uz/">
+    <meta property="og:image" content="{% static 'frontend/img/logo/MedMapp_Logo.png' %}">
+    <meta property="og:site_name" content="medmapp.uz">
+
+    <!-- Tailwind CSS va Ikonkalar -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'frontend/img/logo/favicon.png' %}">
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <img src="{% static 'frontend/img/logo/favicon.png' %}" alt="MedMapp yuklanmoqda...">
+    </div>
+
+    <!-- Header -->
+    <header class="header scrolled">
+        <a href="{% url 'home_lang' 'uz' %}" class="header-logo">
+            <img src="{% static 'frontend/img/logo/MedMapp_Logo.png' %}" alt="MedMapp Logosi">
+        </a>
+
+        <!-- Navigatsiya -->
+        <nav class="header-nav" id="header-nav">
+            <ul>
+                <li><a href="{% url 'home_lang' 'uz' %}">Bosh sahifa</a></li>
+                <li><a href="{% url 'services' %}">Xizmatlar</a></li>
+                <li><a href="{% url 'clinics' %}" class="active">Shifoxonalar</a></li>
+                <li><a href="{% url 'pricing' %}">Narxlar</a></li>
+                <li><a href="{% url 'doctors' %}">Shifokorlar</a></li>
+                <li><a href="{% url 'testimonials' %}">Sharhlar</a></li>
+                <li><a href="{% url 'blog' %}">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Asosiy kontent -->
+    <main>
+        <section class="page-hero-creative">
+            <div class="container">
+                <h1>Eng yaxshi klinikalarni toping</h1>
+                <p>Dunyoning yetakchi shifoxonalari orasidan o'zingizga mosini tanlang va sog'ligingizga befarq bo'lmang.</p>
+            </div>
+        </section>
+
+        <section class="clinics-list-section">
+            <div class="container">
+                <p id="clinics-count" style="text-align:center; margin-bottom: 2rem;"></p>
+                <div class="clinics-grid" id="clinics-grid">
+
+                    <!-- Klinikalar kartalari -->
+                    <div class="clinic-card-item" data-specialty="kardiologiya,onkologiya,nevrologiya" data-country="hindiston" data-city="faridabad">
+                        <img src="{% static 'frontend/img/Amrita/1.jpg' %}" alt="Amrita Hospital binosi" class="card-image">
+                        <div class="card-content">
+                            <h3>Amrita Hospital, Faridabad</h3>
+                            <p class="location">Faridabad, Hindiston</p>
+                            <div class="card-footer">
+                                <span class="accreditation">NABH</span>
+                                <span class="details-link">Batafsil →</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clinic-card-item" data-specialty="kardiologiya,onkologiya,nevrologiya" data-country="hindiston" data-city="gurgaon">
+                        <img src="{% static 'frontend/img/Artemis/Artemis-main.jpg' %}" alt="Artemis Hospital binosi" class="card-image">
+                        <div class="card-content">
+                            <h3>Artemis Hospital, Gurgaon</h3>
+                            <p class="location">Gurgaon, Hindiston</p>
+                            <div class="card-footer">
+                                <span class="accreditation">JCI, NABH</span>
+                                <span class="details-link">Batafsil →</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-main-grid">
+                <div class="footer-column">
+                    <a href="{% url 'home_lang' 'uz' %}" class="header-logo">
+                        <img src="{% static 'frontend/img/logo/MedMapp_Logo.png' %}" alt="MedMapp Logosi" class="footer-logo">
+                    </a>
+                    <p class="footer-about-text">
+                        MedMapp - bu sizning Hindistondagi ishonchli tibbiy hamrohingiz.
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Menyu</h4>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'services' %}">Xizmatlar</a></li>
+                        <li><a href="{% url 'clinics' %}">Shifoxonalar</a></li>
+                        <li><a href="{% url 'pricing' %}">Narxlar</a></li>
+                        <li><a href="{% url 'doctors' %}">Shifokorlar</a></li>
+                        <li><a href="{% url 'testimonials' %}">Sharhlar</a></li>
+                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2025 MedMapp. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="{% static 'frontend/js/config.js' %}"></script>
+    <script src="{% static 'frontend/js/script.js' %}"></script>
+</body>
+</html>
