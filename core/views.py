@@ -34,3 +34,4 @@ class HomePageView(APIView):
             "services": ServiceCardSerializer(ServiceCard.objects.all(), many=True).data,
         }
         return Response(data)
+
