@@ -32,7 +32,8 @@ INSTALLED_APPS = [
     "doctors",
     "patients",
     "blog",
-    "requests"
+    "requests",
+    "frontend",
 
 ]
 
@@ -50,10 +51,11 @@ MIDDLEWARE = [
 ROOT_URLCONF = "config.urls"
 WSGI_APPLICATION = "config.wsgi.application"
 
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],   # umumiy templates
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -65,7 +67,6 @@ TEMPLATES = [
         },
     },
 ]
-
 
 # Database (Postgres)
 DATABASES = {
@@ -79,22 +80,28 @@ DATABASES = {
     }
 }
 
-LANGUAGE_CODE = "uz"
 LANGUAGES = [
-    ("uz", "Uzbek"),
-    ("ru", "Russian"),
+    ("uz", "O‘zbekcha"),
+    ("ru", "Русский"),
     ("en", "English"),
 ]
 
-TIME_ZONE = "Asia/Tashkent"
+LANGUAGE_CODE = "uz"
+
 USE_I18N = True
+USE_L10N = True
 USE_TZ = True
 
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+BASE_DIR = Path(__file__).resolve().parent.parent
 
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "frontend" / "static",   # frontend ichidagi css, js, images shu yerda bo‘ladi
+]
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media"
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
 REST_FRAMEWORK = {
