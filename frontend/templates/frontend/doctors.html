@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcha shifokorlar | MedMapp</title>
+
+    <meta name="keywords" content="medmapp, medmapp uz, Hindistonda davolanish, eng yaxshi shifokorlar, top 10 shifokor, onkologiya mutaxassisi, davolanish Hindistonda">
+    <meta name="description" content="MedMapp orqali Hindistondagi eng tajribali shifokorlar bilan uchrashing.">
+
+    <!-- Tailwind CSS va Ikonkalar -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'frontend/img/logo/favicon.png' %}">
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <img src="{% static 'frontend/img/logo/favicon.png' %}" alt="MedMapp yuklanmoqda...">
+    </div>
+
+    <!-- Header -->
+    <header class="header scrolled">
+        <a href="{% url 'home_lang' 'uz' %}" class="header-logo">
+            <img src="{% static 'frontend/img/logo/MedMapp_Logo.png' %}" alt="MedMapp Logosi">
+        </a>
+        <nav class="header-nav" id="header-nav">
+            <ul>
+                <li><a href="{% url 'home_lang' 'uz' %}">Bosh sahifa</a></li>
+                <li><a href="{% url 'services' %}">Xizmatlar</a></li>
+                <li><a href="{% url 'clinics' %}">Shifoxonalar</a></li>
+                <li><a href="{% url 'pricing' %}">Narxlar</a></li>
+                <li><a href="{% url 'doctors' %}" class="active">Shifokorlar</a></li>
+                <li><a href="{% url 'testimonials' %}">Sharhlar</a></li>
+                <li><a href="{% url 'blog' %}">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <section class="page-hero-creative">
+            <div class="container">
+                <h1>Tajribali shifokorlarni toping</h1>
+                <p>Yetakchi mutaxassislar bilan sog'lig'ingizni ishonchli qo'llarga topshiring.</p>
+            </div>
+        </section>
+
+        <section class="doctors-main-content">
+            <div class="container">
+                <!-- Filtrlar -->
+                <div class="filters-section">
+                    <div class="filters-container">
+                        <select id="filter-specialty">
+                            <option value="all">Barcha yo'nalishlar</option>
+                            <option value="kardiologiya">Kardiologiya</option>
+                            <option value="jarrohlik">Jarrohlik</option>
+                        </select>
+                        <select id="filter-country">
+                            <option value="all">Barcha davlatlar</option>
+                            <option value="hindiston">Hindiston</option>
+                        </select>
+                        <select id="filter-city">
+                            <option value="all">Barcha shaharlar</option>
+                            <option value="faridabad">Faridabad</option>
+                            <option value="dehli">Dehli</option>
+                        </select>
+                    </div>
+                </div>
+
+                <p id="doctors-count"></p>
+
+                <!-- Shifokor kartalari -->
+                <div class="doctors-grid" id="doctors-grid">
+                    <div class="doctor-card-item" data-specialty="kardiologiya" data-country="hindiston" data-city="faridabad">
+                        <div class="card-header">
+                            <img src="{% static 'frontend/img/doctor.jpg' %}" alt="Dr. Ashish Kumar" class="doctor-photo">
+                            <div class="header-info">
+                                <h3>Dr. Ashish Kumar</h3>
+                                <p>Interventsion Kardiologiya</p>
+                                <div class="doctor-rating">★★★★☆</div>
+                            </div>
+                        </div>
+                        <ul class="doctor-stats">
+                            <li><strong>Tajriba:</strong> 15+ yil</li>
+                            <li><strong>Amaliyotlar:</strong> 5000+</li>
+                            <li><strong>Klinika:</strong> Amrita Hospital, Faridabad</li>
+                        </ul>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-consult">Maslahat</a>
+                            <a href="#" class="btn btn-appoint">Uchrashuv</a>
+                            <a href="#" class="btn btn-download" download>Rezyume</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-main-grid">
+                <div class="footer-column">
+                    <a href="{% url 'home_lang' 'uz' %}">
+                        <img src="{% static 'frontend/img/logo/MedMapp_Logo.png' %}" alt="MedMapp Logosi" class="footer-logo">
+                    </a>
+                    <p>MedMapp — Hindistondagi ishonchli tibbiy hamrohingiz.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Menyu</h4>
+                    <ul>
+                        <li><a href="{% url 'services' %}">Xizmatlar</a></li>
+                        <li><a href="{% url 'clinics' %}">Shifoxonalar</a></li>
+                        <li><a href="{% url 'pricing' %}">Narxlar</a></li>
+                        <li><a href="{% url 'doctors' %}">Shifokorlar</a></li>
+                        <li><a href="{% url 'testimonials' %}">Sharhlar</a></li>
+                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MedMapp. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="{% static 'frontend/js/config.js' %}"></script>
+    <script src="{% static 'frontend/js/script.js' %}"></script>
+</body>
+</html>
