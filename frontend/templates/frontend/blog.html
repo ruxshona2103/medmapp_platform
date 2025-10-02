@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | MedMapp</title>
+
+    <meta name="keywords" content="medmapp blog, hindistonda davolanish, tibbiy yangiliklar, sog'liqni saqlash, transplantatsiya, kardiologiya, onkologiya">
+    <meta name="description" content="MedMapp blogida Hindistonda davolanish, sog'liqni saqlash sohasidagi so'nggi yangiliklar va bemorlar uchun foydali maslahatlar bilan tanishing.">
+
+    <meta property="og:title" content="MedMapp Blogi - Tibbiyot va Salomatlik Dunyosi">
+    <meta property="og:description" content="Hindistonda davolanish bo'yicha ekspertlar maslahatlari, klinikalar sharhlari va bemorlar tajribalari.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://medmapp.uz/blog-uz.html">
+    <meta property="og:image" content="{% static 'frontend/img/blog/blog_og_image.jpg' %}">
+    <meta property="og:site_name" content="medmapp.uz">
+
+    <!-- Tailwind CSS va Ikonkalar -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{% static 'frontend/img/logo/favicon.png' %}">
+
+    <!-- Project CSS -->
+    <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
+</head>
+<body>
+
+    <div id="preloader">
+        <img src="{% static 'frontend/img/logo/favicon.png' %}" alt="MedMapp yuklanmoqda...">
+    </div>
+
+    <header class="header scrolled">
+        <a href="/" class="header-logo">
+            <img src="{% static 'frontend/img/logo/MedMapp_Logo.png' %}" alt="MedMapp Logosi">
+        </a>
+
+        <nav class="header-nav" id="header-nav">
+            <div class="mobile-nav-header">
+                <img src="{% static 'frontend/img/logo/favicon.png' %}" alt="MedMapp" class="mobile-nav-logo">
+                <h3 class="mobile-nav-title">Menyu</h3>
+            </div>
+            <ul>
+                <li><a href="{% url 'home_lang' 'uz' %}">Bosh sahifa</a></li>
+                <li><a href="{% url 'services' %}">Xizmatlar</a></li>
+                <li><a href="{% url 'clinics' %}">Shifoxonalar</a></li>
+                <li><a href="{% url 'doctors' %}">Shifokorlar</a></li>
+                <li><a href="{% url 'testimonials' %}">Sharhlar</a></li>
+                <li><a href="{% url 'blog' %}" class="active">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-header">
+            <h1>MedMapp blogi</h1>
+            <p>Hindistonda davolanish, sog'lom turmush tarzi va tibbiyot olamidagi eng so'nggi yangiliklar.</p>
+        </section>
+
+        <div class="blog-layout">
+            <section class="blog-main">
+                <div class="blog-grid">
+                    <!-- Blog Post 1 -->
+                    <article class="post-card">
+                        <div class="post-card-image-wrapper">
+                            <img src="{% static 'frontend/img/Amrita/DJI_0036.jpg' %}" alt="Hindistondagi zamonaviy klinika" class="post-card-image">
+                            <span class="post-date-badge">2-sentabr, 2025</span>
+                        </div>
+                        <div class="post-card-content">
+                            <span class="post-category cat-turizm">Tibbiy Turizm</span>
+                            <h2 class="post-title">Hindistonda Davolanishning 5 Afzalliklari</h2>
+                            <p class="post-excerpt">Nima uchun bemorlar Hindistonni tanlashadi? Yuqori malaka, zamonaviy texnologiyalar va hamyonbop narxlar.</p>
+                            <div class="post-meta">
+                                <span>Dr. N. Aliyev</span>
+                                <a href="{% url 'blog' %}" class="read-more-link">Batafsil &rarr;</a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- boshqa postlar ham shu tartibda -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-main-grid">
+                <div class="footer-column">
+                    <a href="/" class="header-logo">
+                        <img src="{% static 'frontend/img/logo/MedMapp_Logo.png' %}" alt="MedMapp Logosi" class="footer-logo">
+                    </a>
+                    <p class="footer-about-text">
+                        MedMapp - bu sizning Hindistondagi ishonchli tibbiy hamrohingiz.
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Menyu</h4>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'services' %}">Xizmatlar</a></li>
+                        <li><a href="{% url 'clinics' %}">Shifoxonalar</a></li>
+                        <li><a href="{% url 'doctors' %}">Shifokorlar</a></li>
+                        <li><a href="{% url 'testimonials' %}">Sharhlar</a></li>
+                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2025 MedMapp. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="{% static 'frontend/js/config.js' %}"></script>
+    <script src="{% static 'frontend/js/script.js' %}"></script>
+</body>
+</html>
